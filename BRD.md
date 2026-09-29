@@ -51,3 +51,7 @@ Sistem berbasis web yang dikembangkan akan mengotomatisasi dan menyederhanakan s
 3.3 Alur Pengelolaan Event & Pemantauan (Panitia / Admin)
 1. Manajemen Event: Admin melakukan Login ke Dashboard Admin untuk menambah event baru, mengedit deskripsi, serta menentukan jumlah alokasi kuota tiket.
 2. Monitoring Real-Time: Admin dapat memantau pergerakan kuota tiket, rekapitulasi data penjualan, dan status transaksi secara real-time melalui dashboard tanpa perhitungan manual.
+
+## 3.3 Alur Pengelolaan Event & Pemantauan (Panitia / Admin)
+1. Manajemen Event: Admin melakukan Login ke Dashboard Admin untuk menambah event baru, mengedit deskripsi, serta menentukan jumlah alokasi kuota tiket.
+2. Monitoring Real-Time: Admin dapat memantau pergerakan kuota tiket, rekapitulasi data penjualan, dan status transaksi secara real-time melalui dashboard tanpa perhitungan manual.
