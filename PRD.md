@@ -44,3 +44,48 @@ Sistem ini dirancang untuk 2 jenis pengguna (Aktor) dengan hak akses yang berbed
 2. Panitia / Admin:
 - Peran: Pengelola acara di balik layar dan petugas gate di lokasi event.
 - Tujuan: Menginput data event, memantau penjualan kuota tiket, dan memvalidasi E-Ticket pengunjung saat hari pelaksanaan acara.
+
+# 5. Bagaimana Alur Sistem Berjalan pada Setiap Fitur
+Berikut alur teknis langkah demi langkah untuk setiap fitur utama:
+## 5.1 Alur Registrasi & Login (User & Admin)
+1. Pengguna membuka halaman Login/Register.
+2. Pengguna memasukkan data diri (Email & Password).
+3. Sistem memvalidasi kelengkapan data.
+4. Jika data sesuai, sistem menyimpan akun ke database dan mengarahkan pengguna ke Dashboard sesuai dengan peran (role) masing-masing.
+
+## 5.2 Alur Pencarian & Detail Event (User)
+1. User masuk ke halaman Daftar Event.
+2. User dapat mengetikkan kata kunci pada bilah pencarian atau memilih kategori event.
+3. Sistem menampilkan daftar event yang cocok.
+4. User memilih salah satu event untuk masuk ke halaman Detail Event (menampilkan tanggal, lokasi, harga, dan sisa kuota).
+
+## 5.3 Alur Pemesanan Tiket & Pengecekan Kuota (User)
+1. Dari halaman detail event, User menekan tombol Pesan / Beli Tiket.
+2. User mengisi form pemesanan (jumlah tiket dan data pemesan).
+3. Pengecekan Kuota Otomatis oleh Sistem:
+- Jika Sisa Kuota < Jumlah Tiket yang Dipesan: Sistem membatalkan proses dan menampilkan pesan "Tiket Habis / Kuota Tidak Cukup".
+- Jika Kuota Masuk Akal: Sistem melanjutkan ke halaman pembayaran.
+
+## 5.4 Alur Pembayaran & Generate E-Ticket (User)
+1. User memilih opsi metode pembayaran simulasi (Bank Transfer / E-Wallet).
+2. User menekan tombol Bayar Sekarang.
+3. Sistem memproses simulasi pembayaran.
+4. Setelah transaksi berstatus berhasil:
+- Sistem mengurangi kuota event secara otomatis.
+- Sistem membuat (generate) Kode Tiket Unik berupa kombinasi acak huruf dan angka (contoh: TKT-8X91A).
+5. Sistem menerbitkan E-Ticket yang menampilkan informasi event, nama pembeli, jumlah tiket, dan kode acak tiket.
+
+## 5.5 Alur Manajemen Data Event (Admin)
+1. Admin mengakses Dashboard Admin dan memilih menu Kelola Event.
+2. Admin mengisi form tambah event (Nama, Poster, Tanggal, Lokasi, Harga, Deskripsi, Jumlah Kuota Awal).
+3. Admin menekan tombol simpan.
+4. Sistem memperbarui database dan langsung menampilkan event tersebut pada katalog publik.
+
+## 5.6 Alur Cek & Validasi Tiket di Lokasi Acara (Admin)
+1. Pengunjung datang ke pintu masuk dan memperlihatkan E-Ticket.
+2. Admin/Panitia membuka menu Validasi Tiket pada halaman Admin.
+3. Admin memasukkan/menginput Kode Tiket Unik milik pengunjung.
+4. Pengecekan Keabsahan oleh Sistem (< 5 Detik):
+- Jika Kode Tidak Ditemukan: Tampil status "Tiket Tidak Valid / Palsu".
+- Jika Kode Ditemukan & Status 'Sudah Terpakai': Tampil peringatan "Tiket Sudah Pernah Digunakan".
+- Jika Kode Ditemukan & Status 'Belum Terpakai': Tampil pesan "Tiket Valid", lalu sistem mengubah status tiket tersebut menjadi 'Terpakai' agar tidak bisa digunakan ulang.
