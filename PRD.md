@@ -8,8 +8,8 @@ Platform ini menghubungkan dua pihak utama:
 
 # 2. Apa Saja yang Dibutuhkan untuk Membangun?
 ## 2.1 Kebutuhan Perangkat Lunak & Teknologi (Tech Stack)
-- Frontend: HTML5, CSS3 / Framework CSS (misal: Tailwind CSS / Bootstrap), JavaScript.
-- Backend: Laravel
+- Frontend: HTML, CSS / Framework CSS (misal: Tailwind CSS / Bootstrap), JavaScript.
+- Backend: Laravel.
 - Database: MySQL (untuk menyimpan data pengguna, event, transaksi, dan kode tiket).
 - Environment & Tools: Code Editor (VS Code), Web Server (XAMPP / Node Environment), Git & GitHub (version control).
 
